@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صانع الشعارات - Omar Mohammad</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            font-family: 'Times New Roman', serif;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 18px;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 600px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .logo-preview {
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            font-size: 36px;
+            text-transform: uppercase;
+            color: #000;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        .game-icon {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+        }
+
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>OMAR MOHAMED ❤️</h1>
+        <nav>
+            <a href="#home">الرئيسية</a>
+            <a href="#games">ألعاب</a>
+            <a href="#create">إنشاء شعار</a>
+        </nav>
+    </header>
+
+    <div id="home" class="container">
+        <h2>مرحبًا بك في صانع الشعارات!</h2>
+        <p>أنشئ شعارات احترافية لكل ألعابك بسهولة وخصص كل التفاصيل بنفسك.</p>
+    </div>
+
+    <div id="games" class="container">
+        <h3>اختر لعبتك المفضلة</h3>
+        <div class="input-group">
+            <label for="gameType">نوع اللعبة:</label>
+            <div style="position: relative;">
+                <img src="diamond-sword.png" alt="سيف دايموند" style="position: absolute; top: -40px; left: 50%; transform: translateX(-50%); width: 60px; height: auto;">
+                <select id="gameType" onchange="updateGameIcon()" style="margin-top: 20px;">
+                    <option value="Minecraft">Minecraft</option>
+                    <option value="Fortnite">Fortnite</option>
+                    <option value="PUBG">PUBG</option>
+                    <option value="Call of Duty">Call of Duty</option>
+                </select>
+            </div>
+        </div>
+        <img id="gameIcon" class="game-icon" src="minecraft-icon.png" alt="أيقونة اللعبة">
+    </div>
+
+    <div id="create" class="container">
+        <h3>إنشاء شعارك باستخدام الذكاء الاصطناعي</h3>
+        <p>دع الذكاء الاصطناعي يساعدك في تصميم شعار احترافي في ثوانٍ!</p>
+        <div class="input-group">
+            <label for="logoText">النص (اسمك ولقبك):</label>
+            <input type="text" id="logoText" placeholder="أدخل اسمك ولقبك">
+        </div>
+
+        <div class="input-group">
+            <label for="logoColor">لون النص:</label>
+            <input type="color" id="logoColor" value="#000000">
+        </div>
+
+        <div class="input-group">
+            <label for="logoFont">نوع الخط:</label>
+            <select id="logoFont">
+                <option value="Arial">Arial</option>
+                <option value="Tahoma">Tahoma</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Courier New">Courier New</option>
+            </select>
+        </div>
+
+        <button class="btn" onclick="generateLogo()">إنشاء الشعار باستخدام AI</button>
+
+        <div id="logoPreview" class="logo-preview">معاينة الشعار</div>
+    </div>
+
+    <footer>
+        جميع الحقوق محفوظة © Omar Mohammad
+    </footer>
+
+    <script>
+        function updateGameIcon() {
+            const gameType = document.getElementById('gameType').value;
+            const gameIcon = document.getElementById('gameIcon');
+
+            switch (gameType) {
+                case 'Minecraft':
+                    gameIcon.src = 'minecraft-icon.png';
+                    break;
+                case 'Fortnite':
+                    gameIcon.src = 'fortnite-icon.png';
+                    break;
+                case 'PUBG':
+                    gameIcon.src = 'pubg-icon.png';
+                    break;
+                case 'Call of Duty':
+                    gameIcon.src = 'callofduty-icon.png';
+                    break;
+                default:
+                    gameIcon.src = 'default-icon.png';
+            }
+        }
+
+        function generateLogo() {
+            const text = document.getElementById('logoText').value;
+            const color = document.getElementById('logoColor').value;
+            const font = document.getElementById('logoFont').value;
+
+            const logoPreview = document.getElementById('logoPreview');
+
+            // عرض رسالة أثناء توليد الشعار
+            logoPreview.textContent = "يتم إنشاء الشعار باستخدام الذكاء الاصطناعي...";
+            logoPreview.style.color = "#000";
+            logoPreview.style.fontFamily = "Arial";
+
+            // تأخير بسيط لمحاكاة عملية الذكاء الاصطناعي
+            setTimeout(() => {
+                logoPreview.textContent = text || "شعارك هنا";
+                logoPreview.style.color = color;
+                logoPreview.style.fontFamily = font;
+            }, 1000); // 1 ثانية لمحاكاة العملية
+        }
+    </script>
+</body>
+</html>
+"""
+
+# Writing the updated HTML content with "OMAR MOHAMED" and images
+file_path_with_name_emoji_images = "/mnt/data/logo_creator_with_name_emoji_images.html"
+with open(file_path_with_name_emoji_images, "w", encoding="utf-8") as file:
+    file.write(html_with_name)
+
+file_path_with_name_emoji_images
